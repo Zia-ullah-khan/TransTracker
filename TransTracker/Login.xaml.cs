@@ -21,9 +21,13 @@ public partial class Login : ContentPage
 
         var result = await apiService.GetAsync<TestModel>(apiUrl);
 
-        if (result != null && !string.IsNullOrEmpty(result.Message))
-        {
-            test.Text = result.Message;
-        }
+        //if (result != null && !string.IsNullOrEmpty(result.Message))
+        //{
+            //test.Text = result.Message;
+        //}
+    }
+    private async void startTracking(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new startTracking());
     }
 }

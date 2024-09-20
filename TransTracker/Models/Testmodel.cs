@@ -8,6 +8,6 @@ namespace TransTracker.Models
 {
     public class TestModel 
     {
-        public required string? Message { get; set; }  = string.Empty;
+        public required string? id { get; set; }  = string.Empty;
     }
 }

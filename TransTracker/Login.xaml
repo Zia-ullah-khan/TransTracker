@@ -7,7 +7,7 @@
         <Label Text="Login"/>
         <Entry x:Name="Username" Placeholder="Enter your username"/>
         <Entry x:Name="Password" Placeholder="Enter your Password"/>
-        <Button x:Name="Submit" Text="Submit"/>
+        <Button x:Name="Submit" Text="Submit" Clicked="startTracking"/>
         <Button x:Name="CreateAccount" Text="Create Account"/>
         <Label Text="Hi" x:Name="test"/>
     </VerticalStackLayout>

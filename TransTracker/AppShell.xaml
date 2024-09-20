@@ -19,5 +19,9 @@
         Title="Map"
         ContentTemplate="{DataTemplate local:Map}"
         Route="Map" />
+    <ShellContent
+        Title="StartTracking"
+        ContentTemplate="{DataTemplate local:startTracking}"
+        Route="startTracking" />
 
 </Shell>

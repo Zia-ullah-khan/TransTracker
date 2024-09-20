@@ -2,7 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TransTracker.Map"
-             Title="Map">
-    <maps:Map IsShowingUser="True"/>
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="TransTracker.Map">
+
+    <Grid>
+
+        <Grid x:Name="TransIdPopup" BackgroundColor="Black" IsVisible="True" Padding="10">
+            <Label Text="Enter your bus id"/>
+            <Entry Text="" x:Name="TransID"/>
+            <Button Text="Submit" Clicked='Popup'/>
+        </Grid>
+
+        <maps:Map x:Name="BusMap" IsShowingUser="True" IsEnabled="False">
+            <x:Arguments>
+                <maps:MapSpan>
+                    <x:Arguments>
+                        <sensors:Location>
+                            <x:Arguments>
+                                <x:Double>36.9628066</x:Double>
+                                <x:Double>-122.0194722</x:Double>
+                            </x:Arguments>
+                        </sensors:Location>
+                        <x:Double>0.01</x:Double>
+                        <x:Double>0.01</x:Double>
+                    </x:Arguments>
+                </maps:MapSpan>
+            </x:Arguments>
+            <maps:Map.Pins>
+                <maps:Pin Label="Santa Cruz"
+                          Address="The city with a boardwalk"
+                          Type="Place">
+                    <maps:Pin.Location>
+                        <sensors:Location>
+                            <x:Arguments>
+                                <x:Double>36.9628066</x:Double>
+                                <x:Double>-122.0194722</x:Double>
+                            </x:Arguments>
+                        </sensors:Location>
+                    </maps:Pin.Location>
+                </maps:Pin>
+            </maps:Map.Pins>
+        </maps:Map>
+
+    </Grid>
 </ContentPage>

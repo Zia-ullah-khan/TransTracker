@@ -6,4 +6,10 @@ public partial class Map : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private void Popup(object sender, EventArgs e)
+	{
+        TransIdPopup.IsVisible = false;
+	}
+
 }
