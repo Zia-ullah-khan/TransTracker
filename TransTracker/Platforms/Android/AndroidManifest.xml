@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.carbocredit.TransTracker" android:versionCode="1" android:versionName="&quot;9/19/24&quot;">
 	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:usesCleartextTraffic="true">
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="You thought you would get a free api key L bozo" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC8eq3ohmk6-X7Di8UK-7YapCQ806Qb79M" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />

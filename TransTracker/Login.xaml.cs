@@ -19,12 +19,12 @@ public partial class Login : ContentPage
         var apiService = new ApiService();
         string apiUrl = "http://71.163.166.96:3002/test";
 
-        var result = await apiService.GetAsync<TestModel>(apiUrl);
+        var result = await apiService.GetAsync<messageModel>(apiUrl);
 
-        //if (result != null && !string.IsNullOrEmpty(result.Message))
-        //{
-            //test.Text = result.Message;
-        //}
+        if (result != null && !string.IsNullOrEmpty(result.Message))
+        {
+            test.Text = result.Message;
+        }
     }
     private async void startTracking(object sender, EventArgs e)
     {
