@@ -23,5 +23,9 @@
         Title="StartTracking"
         ContentTemplate="{DataTemplate local:startTracking}"
         Route="startTracking" />
+    <ShellContent
+        Title="Ask For Transport ID"
+        ContentTemplate="{DataTemplate local:AskForTransID}"
+        Route="AskForTransID" />
 
 </Shell>

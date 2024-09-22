@@ -14,7 +14,7 @@
         }
         private async void withoutLogin(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Map());
+            await Navigation.PushAsync(new AskForTransID());
         }
     }
 }

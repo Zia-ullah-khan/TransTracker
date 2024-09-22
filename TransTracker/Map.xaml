@@ -8,41 +8,10 @@
 
     <Grid>
 
-        <Grid x:Name="TransIdPopup" BackgroundColor="Black" IsVisible="True" Padding="10">
-            <Label Text="Enter your bus id"/>
-            <Entry Text="" x:Name="TransID"/>
-            <Button Text="Submit" Clicked='Popup'/>
-        </Grid>
+
+
 
         <maps:Map x:Name="BusMap" IsShowingUser="True" IsEnabled="False">
-            <x:Arguments>
-                <maps:MapSpan>
-                    <x:Arguments>
-                        <sensors:Location>
-                            <x:Arguments>
-                                <x:Double>36.9628066</x:Double>
-                                <x:Double>-122.0194722</x:Double>
-                            </x:Arguments>
-                        </sensors:Location>
-                        <x:Double>0.01</x:Double>
-                        <x:Double>0.01</x:Double>
-                    </x:Arguments>
-                </maps:MapSpan>
-            </x:Arguments>
-            <maps:Map.Pins>
-                <maps:Pin Label="Santa Cruz"
-                          Address="The city with a boardwalk"
-                          Type="Place">
-                    <maps:Pin.Location>
-                        <sensors:Location>
-                            <x:Arguments>
-                                <x:Double>36.9628066</x:Double>
-                                <x:Double>-122.0194722</x:Double>
-                            </x:Arguments>
-                        </sensors:Location>
-                    </maps:Pin.Location>
-                </maps:Pin>
-            </maps:Map.Pins>
         </maps:Map>
 
     </Grid>
