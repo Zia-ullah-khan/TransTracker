@@ -54,7 +54,7 @@ namespace TransTracker
         public async Task LookUpTransID(string busId)
         {
             var apiService = new ApiService();
-            string apiUrl = $"http://71.163.166.96:3002/getlocation?id={busId}";
+            string apiUrl = $"http://localhost:3002/getlocation?id={busId}";
 
             var result = await apiService.GetAsync<LocationModel>(apiUrl);
 
