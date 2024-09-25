@@ -50,7 +50,7 @@ public partial class startTracking : ContentPage
                         CurrentLocation.Text = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
                     });
 
-                    string url = $"http://71.163.166.96:3002/sendlocation?latitude={location.Latitude}&longitude={location.Longitude}&id=2456";
+                    string url = $"http://localhost:3002/sendlocation?latitude={location.Latitude}&longitude={location.Longitude}&id=2456";
 
                     var apiService = new ApiService();
                     var result = await apiService.GetAsync<TestModel>(url);
