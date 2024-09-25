@@ -1,23 +1,56 @@
 using Microsoft.Maui.Controls.Maps;
 using TransTracker.Models;
-using static System.Net.Mime.MediaTypeNames;
+using System.Timers;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui;
 
 namespace TransTracker
 {
     public partial class Map : ContentPage
     {
         public string BusId { get; set; }
+        private System.Timers.Timer locationUpdateTimer;
+
+
         public Map(string busId)
         {
             InitializeComponent();
             BusId = busId;
-            
         }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await LookUpTransID(BusId);
+            StartLocationUpdates();
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            StopLocationUpdates();
+        }
+
+        public void StartLocationUpdates()
+        {
+            if (locationUpdateTimer == null)
+            {
+                locationUpdateTimer = new System.Timers.Timer(5000);
+                locationUpdateTimer.Elapsed += async (sender, e) => await LookUpTransID(BusId);
+                locationUpdateTimer.AutoReset = true;
+                locationUpdateTimer.Enabled = true;
+            }
+        }
+
+        public void StopLocationUpdates()
+        {
+            if (locationUpdateTimer != null)
+            {
+                locationUpdateTimer.Stop();
+                locationUpdateTimer.Dispose();
+                locationUpdateTimer = null;
+            }
+        }
+
         public async Task LookUpTransID(string busId)
         {
             var apiService = new ApiService();
@@ -30,20 +63,24 @@ namespace TransTracker
                 double latitude = double.Parse(result.Latitude);
                 double longitude = double.Parse(result.Longitude);
 
-                var newPin = new Pin
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    Label = result.Id,
-                    Location = new Location(latitude, longitude),
-                    Type = PinType.Place
-                };
+                    BusMap.Pins.Clear();
+                    var newPin = new Pin
+                    {
+                        Label = result.Id,
+                        Location = new Location(latitude, longitude),
+                        Type = PinType.Place,
+                    };
 
-                BusMap.Pins.Add(newPin);
+                    BusMap.Pins.Add(newPin);
+                    BusMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(latitude, longitude), Distance.FromMiles(1))); // Move the map to the new location
+                });
             }
             else
             {
                 Console.WriteLine("No valid data from API.");
             }
         }
-
     }
 }
