@@ -17,7 +17,7 @@ public partial class Login : ContentPage
     public async Task FetchData()
     {
         var apiService = new ApiService();
-        string apiUrl = "http://71.163.166.96:3002/test";
+        string apiUrl = "http://localhost:3002/test";
 
         var result = await apiService.GetAsync<messageModel>(apiUrl);
 
